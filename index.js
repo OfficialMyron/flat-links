@@ -5,7 +5,7 @@ var app = express();
 // all environments
 app.set('port', process.env.PORT || 3000);
 
-app.get('/portal', function(req, res){
+app.get('/user/post-portal', function(req, res){
   res.redirect('https://roblox.com');
 });
 http.createServer(app).listen(app.get('port'), function(){
