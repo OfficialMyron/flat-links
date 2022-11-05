@@ -1,16 +1,13 @@
-const bodyParser = require('body-parser');
-const port = process.env.PORT || 3000;
-var express = require('express');
+var express = require('express')
+  , http = require('http');
 var app = express();
 
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+// all environments
+app.set('port', process.env.PORT || 3000);
 
-app.get('/portal', function(req, res) {
-    res.redirect(`https://discord.com`);
+app.get('*', function(req, res){
+  res.redirect('http://tumblr.com/dashboard');
 });
-
-const listener = app.listen(port, () => {
-    console.log(`App listening at port ${port}`);
+http.createServer(app).listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
 });
